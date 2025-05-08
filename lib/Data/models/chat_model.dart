@@ -8,9 +8,18 @@ class ChatModel {
     required this.user,
     required this.message,
   });
+
+  factory ChatModel.fromJson(Map<String, dynamic> json) {
+    return ChatModel(
+      id: json['id'],
+      user: json['output']?[0]?['role'] ?? 'Unknown',
+      message: json['output']?[0]?['content']?[0]?['text'] ?? 'No response',
+    );
+  }
 }
 
-List<ChatModel> chatList = [
+/* Used to simulate how the Ui would look like to the user
+List<ChatModel> tempchatList = [
   ChatModel(id: '1', user: 'user', message: 'I would like to report a bug.'),
   ChatModel(
     id: '2',
@@ -61,3 +70,4 @@ List<ChatModel> chatList = [
   ChatModel(id: '19', user: 'user', message: 'I would like to report a bug.'),
   ChatModel(id: '20', user: 'system', message: 'New user session started.'),
 ];
+*/

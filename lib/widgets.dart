@@ -5,6 +5,7 @@ Container chatsystem({
   double width = 100,
   String message = '',
   String user = 'user',
+  String type = '0',
 }) {
   return Container(
     alignment: user == 'user' ? Alignment.bottomRight : Alignment.bottomLeft,
@@ -32,7 +33,11 @@ Container chatsystem({
     child: Align(
       alignment: Alignment.centerLeft,
       child: Text(
-        message,
+        user != 'user' && type == 'No Prompt'
+            ? "NO Prompt Engineering \n\n $message"
+            : user != 'user' && type == 'With Prompt'
+            ? "With Prompt Engineering \n\n $message"
+            : message,
         style: TextStyle(fontSize: 14, color: Colors.black),
         textAlign: TextAlign.left,
       ),
